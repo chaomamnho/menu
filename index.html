@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cháo Dinh Dưỡng Mầm Nhỏ – Nghĩa Tân</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<style>
+:root{
+  --green:#2e7d32;
+  --orange:#fb8c00;
+  --red:#e53935;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,sans-serif;
+  background:#f4f7f4;
+}
+
+/* HEADER */
+.header{
+  background:#fff;
+  border-bottom:1px solid #e0e0e0;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-inner{
+  max-width:1000px;
+  margin:auto;
+  padding:10px 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.header-left strong{color:var(--green);font-size:16px}
+.header-left div{font-size:14px}
+.header-right img{height:38px}
+
+/* FLOAT CALL + ZALO */
+.float-right{
+  position:fixed;
+  right:12px;
+  bottom:120px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999;
+}
+.float-btn{
+  width:46px;height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+.call{background:#e53935}
+.zalo{background:#0abf53}
+
+/* LAYOUT */
+.container{max-width:1000px;margin:auto;padding:14px}
+.section{
+  background:#fff;
+  border-radius:14px;
+  padding:14px;
+  margin:16px 0;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
+}
+.section h2{margin:0 0 10px;color:var(--green)}
+
+/* MENU */
+.menu-header{display:flex;justify-content:space-between;align-items:center}
+.capture-btn{background:none;border:none;font-size:18px;cursor:pointer}
+.menu-item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px dashed #ddd;
+}
+.menu-price{color:var(--red);font-weight:600}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed #ddd}
+
+/* ZALO COMMUNITY under TOPPING */
+.zalo-under-topping{
+  margin-top:12px;
+  background:#e8f5e9;
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+}
+.zalo-under-topping a{
+  display:inline-block;
+  margin-top:6px;
+  padding:8px 16px;
+  background:#0abf53;
+  color:#fff;
+  border-radius:20px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* ORDER */
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+.app-grid img{width:100%;border-radius:8px}
+
+/* COMBO */
+.combo-preview{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.combo-preview img{
+  width:100%;
+  border-radius:12px;
+}
+.combo-btn{
+  margin-top:10px;
+  background:var(--orange);
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:24px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:16px;
+}
+.footer-left{font-size:14px}
+.footer-right{
+  background:#f9fbe7;
+  border-radius:14px;
+  padding:12px;
+  text-align:center;
+}
+.footer-right img{
+  width:180px;
+  max-width:100%;
+  margin-top:8px;
+}
+@media(max-width:640px){
+  .footer{grid-template-columns:1fr}
+}
+
+/* POPUP + ANIMATION */
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:3000;
+  align-items:center;
+  justify-content:center;
+}
+.popup-content{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  max-width:560px;
+  width:92%;
+  max-height:90vh;
+  overflow-y:auto;
+  animation:popupShow .3s ease;
+}
+@keyframes popupShow{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.popup-images{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.popup-images img{width:100%;border-radius:12px}
+.popup-actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+.popup-actions a,
+.popup-actions button{
+  flex:1;
+  padding:10px;
+  border-radius:22px;
+  font-weight:700;
+  border:none;
+  text-align:center;
+  cursor:pointer;
+  text-decoration:none;
+}
+.btn-call{background:#2e7d32;color:#fff}
+.btn-close{background:#e53935;color:#fff}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <strong>Cháo Dinh Dưỡng Mầm Nhỏ – Nghĩa Tân</strong>
+      <div>📞 0363 443 443</div>
+      <div>⏰ <span id="timeNow"></span></div>
+      <div id="openStatus"></div>
+    </div>
+    <div class="header-right">
+      <img src="logo.png">
+    </div>
+  </div>
+</div>
+
+<!-- FLOAT -->
+<div class="float-right">
+  <a class="float-btn call" href="tel:0363443443">📞</a>
+  <a class="float-btn zalo" href="https://zalo.me/0363443443">💬</a>
+</div>
+
+<div class="container">
+
+<!-- MENU -->
+<div class="section" id="menuSection">
+  <div class="menu-header">
+    <h2 id="menuTitle">🍲 MENU CHÁO</h2>
+    <button class="capture-btn" onclick="captureMenu()">📸</button>
+  </div>
+  <div id="menu"></div>
+</div>
+
+<!-- RAU + TOPPING -->
+<div class="section">
+  <div class="grid-2">
+    <div>
+      <h2>🥬 Rau củ</h2>
+      <div class="row">🌿 Rau ngót</div>
+      <div class="row">🥬 Rau cải</div>
+      <div class="row">🍃 Mồng tơi</div>
+      <div class="row">🎃 Bí đỏ</div>
+      <div class="row">🥕 Cà rốt</div>
+      <div class="row">🍠 Khoai lang</div>
+    </div>
+    <div>
+      <h2>➕ Topping</h2>
+      <div class="row">🐟 Ruốc cá hồi <span style="color:red">+85K</span></div>
+      <div class="row">🧀 Phô mai tách muối <span style="color:red">+7K</span></div>
+      <div class="row">🧀 Phô mai thường <span style="color:red">+5K</span></div>
+      <div class="row">🧈 Bơ lạt TH <span style="color:red">+6K</span></div>
+
+      <!-- ZALO COMMUNITY BUTTON -->
+      <div class="zalo-under-topping">
+        👥 Nhận menu & ưu đãi mỗi ngày<br>
+        <a href="https://zalo.me/g/ovnitu291" target="_blank">
+          👉 Tham gia cộng đồng Zalo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APP ORDER -->
+<div class="section">
+  <h2>📲 APP ĐẶT MÓN</h2>
+  <div class="app-grid">
+    <a href="https://order.ipos.vn/menu?pos_parent=BRAND-ZN72&pos_id=121647"><img src="logo-ipos.png"></a>
+    <a href="https://grb.to/chaodinhduongmamnhonghiatan"><img src="logo-grab.png"></a>
+    <a href="https://shopeefood.vn/u/T8dvBBe"><img src="logo-shopeefood.png"></a>
+    <a href="https://begroup.onelink.me/ZOqn/etvdcsl5"><img src="logo-befood.png"></a>
+    <a href="https://xanhsmngon.onelink.me/14WJ/4nxrwpmt"><img src="logo-xanhsm.png"></a>
+  </div>
+</div>
+
+<!-- COMBO -->
+<div class="section">
+  <h2>❄️ Combo Cháo Lạnh</h2>
+  <div class="combo-preview">
+    <img src="combo1.jpg">
+    <img src="combo2.jpg">
+  </div>
+  <button class="combo-btn" onclick="openCombo()">Xem chi tiết combo</button>
+</div>
+
+<!-- FOOTER -->
+<div class="section footer">
+  <div class="footer-left">
+    <strong>Cháo Dinh Dưỡng Mầm Nhỏ – Nghĩa Tân</strong><br>
+    103C-A11 Nghĩa Tân, P. Nghĩa Đô, Hà Nội<br>
+    <div style="margin-top:10px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14894.960379276297!2d105.792697!3d21.043083!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abb38c7c14f7%3A0x7f4eb7d792de80f4!2zQ2jDoW8gRGluaCBExrDhu6FuZyBDYW8gQ-G6pXAgTeG6p20gTmjhu48gLSBOZ2jEqWEgVMOibg!5e0!3m2!1svi!2sus!4v1770304782459!5m2!1svi!2sus"
+		style="width:100%;height:180px;border:0;border-radius:12px;"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="footer-right">
+    <strong>💳 Quét mã để thanh toán</strong>
+    <img src="qr-thanhtoan.png">
+  </div>
+</div>
+
+</div>
+
+<!-- POPUP COMBO CHÁO LẠNH -->
+<div class="popup" id="comboPopup">
+  <div class="popup-content">
+
+    <h3>❄️ Combo Cháo Lạnh (7 Set)</h3>
+    <p style="font-size:14px;color:#555">
+      Mỗi combo gồm <strong>7 set – dùng cho 7 bữa</strong>
+    </p>
+
+    <!-- Nội dung -->
+    <div class="combo-block">
+      <h4>I. Thành phần mỗi set</h4>
+      <ul>
+        <li><strong>Khối lượng:</strong> 400g</li>
+        <li>🍚 Cháo trắng: 300g</li>
+        <li>🥩 Nhân: 50g</li>
+        <li>🥬 Rau củ theo mùa: 50g</li>
+      </ul>
+    </div>
+
+    <div class="combo-block">
+      <h4>II. Bảo quản</h4>
+      <ul>
+        <li>❄️ Đông lạnh: -12°C đến -18°C</li>
+        <li>📆 Hạn dùng: 30 ngày từ ngày sản xuất</li>
+        <li>⚠️ Dùng trong ngày sau khi mở bao bì</li>
+      </ul>
+    </div>
+
+    <div class="combo-block">
+      <h4>III. Hướng dẫn sử dụng</h4>
+      <p><strong>Bước 1:</strong> Cho cháo trắng, rau/củ và nhân vào nồi.</p>
+      <p><strong>Bước 2:</strong> Đun sôi, khuấy đều tay.  
+      Có thể thêm 1–2 giọt mắm hoặc 1–2 thìa nước lọc tùy bé.</p>
+    </div>
+
+    <div class="combo-note">
+      <strong>Lưu ý:</strong><br>
+      • Không cấp đông lại sau khi mở bao bì.<br>
+      • Cháo có thể xốp khi đông, đun sôi sẽ dẻo lại bình thường.
+    </div>
+
+    <!-- NÚT HÀNH ĐỘNG -->
+    <div class="popup-actions">
+      <a href="tel:0363443443" class="btn-call">📞 Gọi tư vấn</a>
+      <button class="btn-close" onclick="closeCombo()">❌ Đóng</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function openCombo(){document.getElementById("comboPopup").style.display="flex"}
+function closeCombo(){document.getElementById("comboPopup").style.display="none"}
+
+/* TIME + STATUS */
+function updateTime(){
+  const now=new Date();
+  const utc7=new Date(now.getTime()+(7*60+now.getTimezoneOffset())*60000);
+  const pad=n=>n.toString().padStart(2,"0");
+  const thu=["Chủ Nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"][utc7.getDay()];
+  const dd=pad(utc7.getDate()),mm=pad(utc7.getMonth()+1),yyyy=utc7.getFullYear();
+  document.getElementById("timeNow").innerText=
+    `${pad(utc7.getHours())}:${pad(utc7.getMinutes())}`;
+  document.getElementById("menuTitle").innerText=
+    `🍲 MENU CHÁO ${thu} – ${dd}/${mm}/${yyyy}`;
+
+  const h=utc7.getHours()+utc7.getMinutes()/60;
+  document.getElementById("openStatus").innerText=
+    (h>=6.5&&h<13||h>=15.5&&h<21)?"🟢 Đang mở cửa":
+    (h>=13&&h<15.5)?"⏳ Tạm nghỉ – mở lại lúc 15:30":
+    "🌙 Đã đóng – mở lại 6:30 sáng mai";
+}
+updateTime();setInterval(updateTime,60000);
+
+/* MENU GOOGLE SHEET */
+fetch("https://docs.google.com/spreadsheets/d/1Ef7w4wHTjuiSEFwTBvC01ed1ANleYuZj4aI_6HVyHeg/export?format=csv")
+.then(r=>r.text()).then(csv=>{
+  const lines=csv.split("\n").slice(1);
+  let html="";
+  lines.forEach(l=>{
+    const c=l.split(",");
+    if(c[2]?.trim().toUpperCase()!=="TRUE")return;
+    html+=`<div class="menu-item"><div>${c[7]}</div><div class="menu-price">${c[8]}</div></div>`;
+  });
+  document.getElementById("menu").innerHTML=html;
+});
+
+/* CAPTURE MENU */
+function captureMenu(){
+  html2canvas(document.getElementById("menuSection"),{scale:2}).then(c=>{
+    const d=new Date();
+    const a=document.createElement("a");
+    a.download=`CMNNT_Menu_${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
+    a.href=c.toDataURL();
+    a.click();
+  });
+}
+</script>
+
+</body>
+</html>
