@@ -162,6 +162,16 @@ body{
   padding:6px; 
 }
 
+.qr-img{
+  width:100%;
+  max-width:220px;
+  border-radius:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  background:#fff;
+  padding:6px;
+  cursor:pointer;
+}
+
 
 /* POPUP */
 .popup{
@@ -292,9 +302,21 @@ body{
 		style="width:100%;height:180px;border:0;border-radius:12px;"
         loading="lazy">
       </iframe>
+	  <p style="
+  margin-top:12px;
+  font-size:13px;
+  color:#555;
+  text-align:center;
+  line-height:1.6
+">
+  💚 Mỗi bát cháo là sự chăm chút từ nguyên liệu sạch và tình yêu dành cho bé.<br>
+  Cảm ơn ba mẹ đã tin tưởng <strong>Cháo Dinh Dưỡng Mầm Nhỏ – Nghĩa Tân</strong>.
+</p>
+
   </div>
   <div class="footer-right">
-    <img src="qr-thanhtoan.png">
+    <p style="font-size:13px;color:#555">💳 Quét mã QR để thanh toán</p>
+	<img src="qr-thanhtoan.png" class="qr-img" onclick="openQR()">
   </div>
 </div>
 
@@ -349,9 +371,18 @@ body{
   </div>
 </div>
 
+<div class="popup" id="qrPopup">
+  <div class="popup-content" style="text-align:center">
+    <img src="qr-thanhtoan.png" style="width:100%;max-width:320px">
+    <p style="font-size:14px;margin-top:8px">
+    </p>
+    <button class="btn-close" onclick="closeQR()">❌ Đóng</button>
+  </div>
+</div>
+
 <script>
 
-/* HOA RƠI */
+/* FLOWER */
 const flowers=["🌸"];
 const fbox=document.getElementById("flowers");
 for(let i=0;i<18;i++){
@@ -421,6 +452,14 @@ function captureMenu(){
     a.click();
   });
 }
+
+function openQR(){
+  document.getElementById("qrPopup").style.display="flex";
+}
+function closeQR(){
+  document.getElementById("qrPopup").style.display="none";
+}
+
 </script>
 
 </body>
