@@ -260,12 +260,7 @@ body{
 
     <div>
       <h2>🥬 Rau củ</h2>
-      <div class="row">🌿 Rau ngót</div>
-      <div class="row">🥬 Rau cải</div>
-      <div class="row">🍃 Mồng tơi</div>
-      <div class="row">🎃 Bí đỏ</div>
-      <div class="row">🥕 Cà rốt</div>
-      <div class="row">🍠 Khoai lang</div>
+	  <div id="rauCu"></div>
     </div>
   </div>
 </div>
@@ -302,17 +297,7 @@ body{
 		style="width:100%;height:180px;border:0;border-radius:12px;"
         loading="lazy">
       </iframe>
-	  <p style="
-  margin-top:12px;
-  font-size:13px;
-  color:#555;
-  text-align:center;
-  line-height:1.6
-">
-  💚 Mỗi bát cháo là sự chăm chút từ nguyên liệu sạch và tình yêu dành cho bé.<br>
-  Cảm ơn ba mẹ đã tin tưởng <strong>Cháo Dinh Dưỡng Mầm Nhỏ – Nghĩa Tân</strong>.
-</p>
-
+	  
   </div>
   <div class="footer-right">
     <p style="font-size:13px;color:#555">💳 Quét mã QR để thanh toán</p>
@@ -327,7 +312,7 @@ body{
 
     <h3>❄️ Combo Cháo Lạnh (7 Set)</h3>
     <p style="font-size:14px;color:#555">
-      Mỗi combo gồm <strong>7 set – dùng cho 7 bữa</strong>
+      Mỗi combo gồm <strong>7 set </strong>
     </p>
 
     <!-- Nội dung -->
@@ -459,6 +444,28 @@ function openQR(){
 function closeQR(){
   document.getElementById("qrPopup").style.display="none";
 }
+
+/* RAU CU */
+const RAU_CU = [
+  { name: "Rau ngót", icon: "🌿", show: false },
+  { name: "Rau cải", icon: "🥬", show: true },
+  { name: "Mồng tơi", icon: "🍃", show: true },
+  { name: "Su su", icon: "🥒", show: true },
+  { name: "Bí đỏ", icon: "🎃", show: true },
+  { name: "Cà rốt", icon: "🥕", show: true },
+  { name: "Khoai lang", icon: "🍠", show: true }
+];
+
+function renderRauCu(){
+  let html = "";
+  RAU_CU.forEach(r=>{
+    if(!r.show) return;
+    html += `<div class="row">${r.icon} ${r.name}</div>`;
+  });
+  document.getElementById("rauCu").innerHTML = html;
+}
+
+renderRauCu();
 
 </script>
 
