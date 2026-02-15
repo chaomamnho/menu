@@ -218,6 +218,24 @@ body{
   </div>
 </div>
 
+<!-- THÔNG BÁO NGHỈ TẾT -->
+<div id="tetNotice" style="
+  display:none;
+  background:linear-gradient(90deg,#ff7043,#ff9800);
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  font-weight:600;
+  font-size:14px;
+  position:sticky;
+  top:0;
+  z-index:2000;
+">
+  🎉 Cháo Dinh Dưỡng Mầm Nhỏ - Nghĩa Tân nghỉ Tết đến hết 
+  <strong>mùng 3 Âm lịch (19/02/2026)</strong>.  
+  🌸 Kính chúc ba mẹ và bé năm mới an khang – vạn sự như ý!
+</div>
+	
 <!-- FLOAT -->
 <div class="float-right">
   <a class="float-btn call" href="tel:0363443443">📞</a>
@@ -476,8 +494,19 @@ function renderRauCu(){
 
 renderRauCu();
 
+
+(function(){
+  const now = new Date();
+  const endDate = new Date("2026-02-19T23:59:59");
+
+  if(now <= endDate){
+    document.getElementById("tetNotice").style.display = "block";
+  }
+})();
+
 </script>
 
 </body>
 </html>
+
 
